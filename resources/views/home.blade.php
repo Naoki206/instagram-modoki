@@ -27,13 +27,13 @@
 
         <div>
         @if($auth)
-            <a href="{{ route('like', ['id' => $image->id ]) }}">いいね(ログイン中)</a>
+            <a href="{{ route('like', ['id' => $image->id ]) }}">いいね</a>
         @else
             <a href="#">いいね(ログアウト中)</a>
         @endif  
         </div>
         <div>
-            <a href="{{ route('liker', ['id' => $image->id ]) }}">いいねした人一覧</a>
+            <a href="{{ route('liker', ['id' => $image->id ]) }}">いいねしたユーザー</a>
         </div>
     </div>
     @endforeach

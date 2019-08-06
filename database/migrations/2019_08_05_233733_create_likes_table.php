@@ -18,6 +18,7 @@ class CreateLikesTable extends Migration
             $table->integer('user_id');
             $table->integer('image_id');
             $table->tinyInteger('image_flg');
+            $table->string('github_id');
             $table->timestamps();
         });
     }

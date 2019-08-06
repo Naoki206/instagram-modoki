@@ -99,10 +99,13 @@ class HomeController extends Controller
     //いいね機能
     public function like($id){
         $auth = Auth::check();
-        Auth::id();
         if(!$auth) {
             return view('loginform');
         }
+
+        $auth_id = Auth::id();
+        $user_github_id = User::where('id', $auth_id)->first()->github_id;
+        
         $like = Like::where('user_id', Auth::id())->where('image_id', $id)->first();
         if (!empty($like)) {
             if ($like->image_flg) {
@@ -111,7 +114,7 @@ class HomeController extends Controller
                 Like::where('user_id', Auth::id())->where('image_id', $id)->update(['image_flg' => 1]);
             }
         } else {
-            Like::insert(['user_id' => Auth::id(), 'image_id' => $id, 'image_flg' => 1]);
+            Like::insert(['user_id' => Auth::id(), 'image_id' => $id, 'image_flg' => 1, 'github_id' => $user_github_id]);
         }
 
         $images = Image::get();
