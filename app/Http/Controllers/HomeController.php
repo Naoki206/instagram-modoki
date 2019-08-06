@@ -99,15 +99,16 @@ class HomeController extends Controller
     //いいね機能
     public function like($id){
         $auth = Auth::check();
+        Auth::id();
         if(!$auth) {
             return view('loginform');
         }
         $like = Like::where('user_id', Auth::id())->where('image_id', $id)->first();
         if (!empty($like)) {
-            if ($like->flg) {
-                Like::where('user_id', Auth::id())->where('image_id', $id)->update(['flg' => 0]);
+            if ($like->image_flg) {
+                Like::where('user_id', Auth::id())->where('image_id', $id)->update(['image_flg' => 0]);
             } else {
-                Like::where('user_id', Auth::id())->where('image_id', $id)->update(['flg' => 1]);
+                Like::where('user_id', Auth::id())->where('image_id', $id)->update(['image_flg' => 1]);
             }
         } else {
             Like::insert(['user_id' => Auth::id(), 'image_id' => $id, 'image_flg' => 1]);
