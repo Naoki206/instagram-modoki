@@ -13,6 +13,10 @@
 </div>
 
 <div>
+<img src=" https://github.com/{{{ $user_info->github_id }}}.png ">
+</div>
+
+<div>
 @isset($images)
     @foreach ($images as $image)
     <div>
