@@ -28,19 +28,19 @@ class GithubController extends Controller
             ]
         ]);
 
-
         //usersテーブルにユーザーのデータが一つもない場合エラー
         $app_user = DB::select('select * from public.users where github_id = ?', [$github_user->user['login']]);
 
+        return redirect()->route('top');
 
-        return view('github', [
-            'user' => $app_user[0],
-            'nickname' => $github_user->nickname,
-            'token' => $token,
-            'repos' => array_map(function($o) {
-                return $o->name;
-            }, json_decode($res->getBody()))
-        ]);
+        // return view('github', [
+        //     'user' => $app_user[0],
+        //     'nickname' => $github_user->nickname,
+        //     'token' => $token,
+        //     'repos' => array_map(function($o) {
+        //         return $o->name;
+        //     }, json_decode($res->getBody()))
+        // ]);
     }
 
     public function createIssue(Request $request)

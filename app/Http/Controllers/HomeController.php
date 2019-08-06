@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Image;
+use App\User;
 use Auth;
 
 
@@ -26,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // dd(Auth::user());
+        // dd(Auth::id());
         return view('home');
     }
 
@@ -47,12 +48,19 @@ class HomeController extends Controller
 
         if ($request->file('image')->isValid([])) {
             // $path = $request->file->store('public');
-            dd(Auth::check());
+            // dd(Auth::check());
+            $user_id = Auth::id();
+            $github_id = User::find($user_id)->github_id;
             $image = base64_encode(file_get_contents($request->image->getRealPath()));
-            Images::insert([
-                "image" => $image, "user_id" => $user_id,
+            Image::insert([
+                "image" => $image, "user_id" => $user_id, "comment" => $request->comment, "github_id" => $github_id,
             ]);
-            return view('home')->with('filename', basename($path));
+            $images = Image::get();
+            // foreach($images as $image) {
+            //     dd($image->comment);
+            // }
+            // return view('home')->with('filename', basename($path));
+            return view('home', compact('images'));
         } else {
             return redirect()
                 ->back()

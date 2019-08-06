@@ -30,7 +30,8 @@ class UserController extends Controller
     }
 
     public function logout() {
+        // dd("aaa");
         Auth::logout();
-        return redirect()->back();
+        return redirect()->route("top");
     }
 }

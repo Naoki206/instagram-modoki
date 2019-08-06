@@ -21,7 +21,8 @@
     @foreach ($images as $image)
     <div>
         <!-- <img src="{{ asset('storage/' . basename($image->img)) }}"> -->
-        <img src="data:image/png;base64,<?= image ?>">
+        <img src="data:image/png;base64,<?= $image->image ?>">
+        <p>{{ $image->comment}}</p>
     </div>
     @endforeach
     @endisset
