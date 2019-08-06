@@ -70,7 +70,7 @@ class LoginController extends Controller
         }
         
         $user = User::where(['github_id' => $github_user->nickname])->first();
-        // $request->session()->put('github_token', $github_user->token);
+        $request->session()->put('github_token', $github_user->token);
 
         Auth::login($user, true);
         
