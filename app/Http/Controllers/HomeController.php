@@ -82,18 +82,20 @@ class HomeController extends Controller
     //投稿フォーム
     public function form() {
         //ログインしていない場合、ログインページにリダイレクト
-        if(!Auth::check()) {
+        $auth = Auth::check();
+        if(!$auth) {
             return view('loginform');
         }
-        return view('form');
+        return view('form', compact('auth'));
     }
 
     //ユーザー詳細ページ
     public function profile($id) {
+        $auth = Auth::check();
         $images = Image::where('user_id', $id)->get();
         $user_info = User::find($id);
 
-        return view('profile', compact('images', 'user_info'));
+        return view('profile', compact('images', 'user_info', 'auth'));
     }
 
     //いいね機能
@@ -125,7 +127,8 @@ class HomeController extends Controller
 
     //いいねした人一覧
     public function liker($id) {
+        $auth = Auth::check();
         $likers = Like::where('image_id', $id)->where('image_flg', 1)->get();
-        return view('likers', compact('likers'));
+        return view('likers', compact('likers', 'auth'));
     }
 }

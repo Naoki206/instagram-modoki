@@ -1,6 +1,10 @@
 <div>
+<a href="{{ route('top') }}">Home</a>
+@if($auth)
 <a href="{{ route('logout') }}">ログアウト</a>
+@else
 <a href="{{ route('github_login') }}">ログイン</a>
+@endif
 <a href="{{ route('form') }}">投稿</a>
 </div>
 
@@ -12,10 +16,6 @@
 @isset($images)
     @foreach ($images as $image)
     <div>
-        <div>
-            <a href="#">{{ $image->github_id}}</a>
-        </div>
-
         <div>
             <!-- <img src="{{ asset('storage/' . basename($image->img)) }}"> -->
             <img src="data:image/png;base64,<?= $image->image ?>">
