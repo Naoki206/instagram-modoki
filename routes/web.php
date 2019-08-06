@@ -21,7 +21,7 @@ Route::get('/bbs', 'BbsController@index');
 
 Route::post('/bbs', 'BbsController@create');
 
-Route::get('github', 'Github\GithubController@top');
+Route::get('github', 'Github\GithubController@top')->name('github_login');
 Route::post('github/issue', 'Github\GithubController@createIssue');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
@@ -34,6 +34,6 @@ Route::post('/upload', 'HomeController@upload');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home', 'UserController@logout')->name('logout');

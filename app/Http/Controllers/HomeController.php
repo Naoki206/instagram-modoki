@@ -28,7 +28,10 @@ class HomeController extends Controller
     public function index()
     {
         // dd(Auth::id());
-        return view('home');
+        $images = Image::get();
+        $auth_status = Auth::check();
+        //dd($auth_status);
+        return view('home', compact('images'));
     }
 
     public function upload(Request $request)

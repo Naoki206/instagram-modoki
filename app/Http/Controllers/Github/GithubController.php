@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Socialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use Auth;
 
 class GithubController extends Controller
 {
@@ -29,7 +31,13 @@ class GithubController extends Controller
         ]);
 
         //usersテーブルにユーザーのデータが一つもない場合エラー
-        $app_user = DB::select('select * from public.users where github_id = ?', [$github_user->user['login']]);
+        // $app_user = DB::select('select * from public.users where github_id = ?', [$github_user->user['login']]);
+
+        // $github_user = Socialite::driver('github')->user();
+        $user = User::where(['github_id' => $github_user->nickname])->first();
+        $request->session()->put('github_token', $github_user->token);
+        Auth::login($user, true);
+        // dd(Auth::check());
 
         return redirect()->route('top');
 

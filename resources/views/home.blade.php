@@ -36,3 +36,4 @@
     <button class="btn btn-success"> 投稿 </button>
 </form>
 <a href="{{ route('logout') }}">ログアウト</a>
+<a href="{{ route('github_login') }}">ログイン</a>
