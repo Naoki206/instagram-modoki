@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('comment')->nullable();
             $table->string('github_id');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

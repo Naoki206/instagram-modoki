@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;// 追加！
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -60,12 +62,19 @@ class LoginController extends Controller
         $github_user = Socialite::driver('github')->user();
 
         $now = date("Y/m/d H:i:s");
-        $app_user = DB::select('select * from public.users where github_id = ?', [$github_user->user['login']]);
-        if (empty($app_user)) {
-            DB::insert('insert into public.users (github_id, created_at, updated_at) values (?, ?, ?)', [$github_user->user['login'], $now, $now]);
+        // $app_user = DB::select('select * from public.users where github_id = ?', [$github_user->user['login']]);
+        $user = User::where(['github_id' => $github_user->nickname])->first();
+        
+        if (empty($user)) {
+            $user = DB::insert('insert into public.users (github_id, created_at, updated_at) values (?, ?, ?)', [$github_user->user['login'], $now, $now]);
         }
-        $request->session()->put('github_token', $github_user->token);
+        
+        $user = User::where(['github_id' => $github_user->nickname])->first();
+        // $request->session()->put('github_token', $github_user->token);
 
+        Auth::login($user, true);
+        
+        //dd(Auth::check());
         return redirect('github');
     }
 }

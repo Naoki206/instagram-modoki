@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use App\User;
+use Auth;
+
 class UserController extends Controller
 {
     public function index()
@@ -25,5 +27,10 @@ class UserController extends Controller
             "name" => $name,
             "comment"  => $comment,
         ]);
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->back();
     }
 }

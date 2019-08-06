@@ -19,6 +19,8 @@ class GithubController extends Controller
             return redirect('login/github');
         }
 
+        // dd($github_user);
+
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', 'https://api.github.com/user/repos', [
             'headers' => [
@@ -26,7 +28,10 @@ class GithubController extends Controller
             ]
         ]);
 
+
+        //usersテーブルにユーザーのデータが一つもない場合エラー
         $app_user = DB::select('select * from public.users where github_id = ?', [$github_user->user['login']]);
+
 
         return view('github', [
             'user' => $app_user[0],

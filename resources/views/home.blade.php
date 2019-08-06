@@ -34,3 +34,4 @@
     {{ csrf_field() }}
     <button class="btn btn-success"> 投稿 </button>
 </form>
+<a href="{{ route('logout') }}">ログアウト</a>

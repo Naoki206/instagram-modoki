@@ -35,3 +35,5 @@ Route::post('/upload', 'HomeController@upload');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'UserController@logout')->name('logout');
