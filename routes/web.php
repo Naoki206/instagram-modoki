@@ -39,3 +39,5 @@ Auth::routes();
 Route::get('/logout', 'UserController@logout')->name('logout');
 
 Route::get('/form', 'HomeController@form')->name('form'); //投稿フォーム
+
+Route::get('/profile/{id}', 'HomeController@profile')->name('profile'); //ユーザー詳細ページ

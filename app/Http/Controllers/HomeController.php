@@ -72,10 +72,19 @@ class HomeController extends Controller
         }
     }
 
+    //投稿フォーム
     public function form() {
+        //ログインしていない場合、ログインページにリダイレクト
         if(!Auth::check()) {
             return view('loginform');
         }
         return view('form');
+    }
+
+    public function profile($id) {
+        $images = Image::where('user_id', $id)->get();
+        $user_info = User::find($id);
+
+        return view('profile', compact('images', 'user_info'));
     }
 }

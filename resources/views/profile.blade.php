@@ -1,22 +1,19 @@
-<!-- エラーメッセージ。なければ表示しない -->
-@if ($errors->any())
-<ul>
-    @foreach($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</ul>
-@endif
-
+<div>
 <a href="{{ route('logout') }}">ログアウト</a>
 <a href="{{ route('github_login') }}">ログイン</a>
 <a href="{{ route('form') }}">投稿</a>
+</div>
 
+<div>
+{{ $user_info->github_id }}
+</div>
 
+<div>
 @isset($images)
     @foreach ($images as $image)
     <div>
         <div>
-            <a href="{{ route('profile', ['id' => $image->user_id]) }}">{{ $image->github_id}}</a>
+            <a href="#">{{ $image->github_id}}</a>
         </div>
 
         <div>
@@ -27,3 +24,4 @@
     </div>
     @endforeach
 @endisset
+<div>
