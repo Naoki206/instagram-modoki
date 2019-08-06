@@ -17,6 +17,7 @@ class CreateLikesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('image_id');
+            $table->tinyInteger('image_flg');
             $table->timestamps();
         });
     }

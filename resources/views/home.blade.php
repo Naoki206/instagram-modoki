@@ -24,6 +24,17 @@
             <img src="data:image/png;base64,<?= $image->image ?>">
             <p>{{ $image->comment}}</p>
         </div>
+
+        <div>
+        @if($auth)
+            <a href="{{ route('like', ['id' => $image->id ]) }}">いいね(ログイン中)</a>
+        @else
+            <a href="#">いいね(ログアウト中)</a>
+        @endif  
+        </div>
+        <div>
+            <a href="{{ route('liker', ['id' => $image->id ]) }}">いいねした人一覧</a>
+        </div>
     </div>
     @endforeach
 @endisset

@@ -41,3 +41,7 @@ Route::get('/logout', 'UserController@logout')->name('logout');
 Route::get('/form', 'HomeController@form')->name('form'); //投稿フォーム
 
 Route::get('/profile/{id}', 'HomeController@profile')->name('profile'); //ユーザー詳細ページ
+
+Route::get('/like/{id}', 'HomeController@like')->name('like'); //いいねタップ
+
+Route::get('/liker/{id}', 'HomeController@liker')->name('liker'); //いいねした人一覧
