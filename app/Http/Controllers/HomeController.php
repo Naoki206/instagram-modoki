@@ -71,4 +71,11 @@ class HomeController extends Controller
                 ->withErrors();
         }
     }
+
+    public function form() {
+        if(!Auth::check()) {
+            return view('loginform');
+        }
+        return view('form');
+    }
 }

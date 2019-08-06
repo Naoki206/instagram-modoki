@@ -30,10 +30,12 @@ Route::post('user', 'User\UserController@updateUser');
 
 Route::get('/', 'HomeController@index')->name('top');
 
-Route::post('/upload', 'HomeController@upload');
+Route::post('/upload', 'HomeController@upload')->name('upload');
 
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'UserController@logout')->name('logout');
+Route::get('/logout', 'UserController@logout')->name('logout');
+
+Route::get('/form', 'HomeController@form')->name('form'); //投稿フォーム
