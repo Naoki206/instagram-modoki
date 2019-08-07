@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+</head>
+<body>
 <!-- エラーメッセージ。なければ表示しない -->
 @if ($errors->any())
 <ul>
@@ -7,6 +18,7 @@
 </ul>
 @endif
 
+<header>
 <a href="{{ route('top') }}">Home</a>
 @if($auth)
 <a href="{{ route('logout') }}">ログアウト</a>
@@ -14,11 +26,13 @@
 <a href="{{ route('github_login') }}">ログイン</a>
 @endif
 <a href="{{ route('form') }}">投稿</a>
+</header>
 
 
+<div class="images_container">
 @isset($images)
     @foreach ($images as $image)
-    <div>
+    <div class="image_container">
         <div>
             <a href="{{ route('profile', ['id' => $image->user_id]) }}">{{ $image->github_id}}</a>
         </div>
@@ -38,7 +52,10 @@
         </div>
         <div>
             <a href="{{ route('liker', ['id' => $image->id ]) }}">いいねしたユーザー</a>
-        </div>
+        </div>  
     </div>
     @endforeach
 @endisset
+</div>
+</body>
+</html>
