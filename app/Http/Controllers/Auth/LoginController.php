@@ -68,18 +68,12 @@ class LoginController extends Controller
         if (empty($user)) {
             $data = ['github_id' => $github_user->user['login'], 'created_at' => $now, 'updated_at' => $now];
             $user = User::insert($data);
-            // $user = DB::insert('insert into public.users (github_id, created_at, updated_at) values (?, ?, ?)', [$github_user->user['login'], $now, $now]);
-
         }
 
-        // dd($user);
-        // $user = User::where(['github_id' => $github_user->nickname])->first();
-        //$request->session()->put('github_token', $github_user->token);
+        $request->session()->put('github_token', $github_user->token);
 
         Auth::login($user, true);
         
-        //dd(Auth::check());
-        // return redirect('github');
-        return redirect()->route('top');
+        return redirect('github');
     }
 }
