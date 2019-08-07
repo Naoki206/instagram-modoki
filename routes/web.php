@@ -24,7 +24,7 @@ Route::post('/bbs', 'BbsController@create');
 Route::get('github', 'Github\GithubController@top')->name('github_login');
 Route::post('github/issue', 'Github\GithubController@createIssue');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
-Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback')->name('github_callback');
 
 Route::post('user', 'User\UserController@updateUser');
 
