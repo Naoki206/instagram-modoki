@@ -67,7 +67,8 @@ class LoginController extends Controller
         
         if (empty($user)) {
             $data = ['github_id' => $github_user->user['login'], 'created_at' => $now, 'updated_at' => $now];
-            $user = User::insert($data);
+            User::insert($data);
+            $user = User::where(['github_id' => $github_user->nickname])->first();
         }
 
         $request->session()->put('github_token', $github_user->token);

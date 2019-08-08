@@ -35,6 +35,15 @@ class GithubController extends Controller
 
         // $github_user = Socialite::driver('github')->user();
         $user = User::where(['github_id' => $github_user->nickname])->first();
+
+        $now = date("Y/m/d H:i:s");
+
+        if(empty($user)) {
+            $data = ['github_id' => $github_user->user['login'], 'created_at' => $now, 'updated_at' => $now];
+            User::insert($data);
+            $user = User::where(['github_id' => $github_user->nickname])->first();
+        }
+        
         $request->session()->put('github_token', $github_user->token);
         Auth::login($user, true);
         // dd(Auth::check());
