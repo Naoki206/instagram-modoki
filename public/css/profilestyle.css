@@ -17,6 +17,8 @@ header{
 #img{
     width: 235px;
     height: 235px;
+    /* margin-left: 100px;   */
+    /* 追加 */
     /* border-radius: 3%; */
     margin-bottom: 30px;
 }
@@ -25,16 +27,17 @@ header{
     /* width: 200px; */
     /* width: calc(33.3% - 10px); */
     /* width: calc(33.3% - 10px); */
-    width: 200px;
+    width: 235px;
     margin: 5px;
+    margin-left: 30px;
 }
 
 .profile_posts_container{
-    /* text-align: center; */
+    text-align: center;
     width: 854px;
     flex-wrap: wrap;
     display: flex;
-    justify-content: space-between;
+    /* justify-cofntent: space-between; */
     text-align: center;
     margin-right: auto;
     margin-left: auto;
