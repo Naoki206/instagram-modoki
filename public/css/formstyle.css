@@ -1,0 +1,39 @@
+header{
+    position: fixed;
+    top: 0;
+    /* left: 0; */
+    text-align: center;
+    background-color: #808080;
+    height: 100px;
+    width: 100%;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+}
+
+.menu_container{
+    padding-top: 27px;
+    color: black;
+    /* margin-bottom: auto; */
+}
+
+.fas{
+    color: rgb(211, 178, 178);
+    width: 150px;
+    height: 50px;
+    font-size: 1.2em;
+} 
+
+.formcontainer{
+    padding-top: 110px;
+    text-align: center;
+}
+
+#a{
+    text-decoration: none;
+}
+
+#file{
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+}

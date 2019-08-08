@@ -27,9 +27,6 @@
 
 <header>
     <div class="menu_container">
-        <!-- <div class="insta_icon">
-            <i class="fab fa-instagram"></i>
-        </div> -->
         <a href="{{ route('top') }}" class="fas fa-home" id="a">ホーム</a>
         <a href="{{ route('form') }}" class="fas fa-camera" id="a">投稿</a>
         @if($auth)
@@ -37,8 +34,6 @@
         @else
             <a href="{{ route('github_login') }}" class="fas fa-sign-in-alt" id="a">ログイン</a>
         @endif
-        <!-- <i class="far fa-heart"></i>
-        <a href="#" class="far fa-heart"></a> -->
     </div>
 </header>
 
@@ -69,7 +64,6 @@
             <!-- <img src="{{ asset('storage/' . basename($image->img)) }}"> -->
             <p>{{ $image->comment}}</p>
         </div>
-
         
     </div>
     @endforeach

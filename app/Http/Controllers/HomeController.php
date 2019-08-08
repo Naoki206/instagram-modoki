@@ -93,9 +93,10 @@ class HomeController extends Controller
     public function profile($id) {
         $auth = Auth::check();
         $images = Image::where('user_id', $id)->get();
+        $image_count = $images->count();
         $user_info = User::find($id);
 
-        return view('profile', compact('images', 'user_info', 'auth'));
+        return view('profile', compact('images', 'user_info', 'auth', 'image_count'));
     }
 
     //いいね機能

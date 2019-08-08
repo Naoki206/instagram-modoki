@@ -17,10 +17,6 @@ header{
     margin-bottom: auto; */
 }
 
-a{
-    text-decoration: none;
-}
-
 #a{
     text-decoration: none;
 }
@@ -44,7 +40,7 @@ img{
 }
 
 .image_container{
-    border: 1px solid rgba(0,0,0,0.3);
+    border: 1px solid rgba(49, 12, 12, 0.219);
     margin-top: 60px;
     width: 600px;
     margin-left: auto;
@@ -73,23 +69,14 @@ img{
     font-size: 1.2em;
 }
 
-.fa-camera{
+.fas{
     color: rgb(211, 178, 178);
     width: 150px;
     height: 50px;
     font-size: 1.2em;
-}
+} 
 
-.fa-sign-out-alt{
-    color: rgb(211, 178, 178);
-    width: 150px;
-    height: 50px;;
-    font-size: 1.2em
-}
-
-.fa-sign-in-alt{
-    color: rgb(211, 178, 178);
-    width: 150px;
-    height: 50px;
-    font-size: 1.2em;
+.liker{
+    padding-top: 500px;
+    font-size: 500px;
 }
