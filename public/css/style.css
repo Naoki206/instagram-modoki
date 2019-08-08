@@ -6,21 +6,50 @@ body{
 }
 
 header{
-    text-align:center;
+    position: fixed;
+    top: 0;
+    /* left: 0; */
+    text-align: center;
     background-color: #808080;
+    height: 70px;
+    width: 100%;
+    /* margin-top: auto;
+    margin-bottom: auto; */
 }
 
 img{
-    width: 500px;
+    width: 100%;
     height: 500px;
 }
 
 .images_container{
     /* text-align:center; */
     margin:0 auto;
-    width: 500px;
+    padding-top: 100px;
+    /* width: 500px; */
 }
 
+/* .container{
+    width: 300px;
+} */
+
 .image_container{
-    border: solid;
+    border: 1px solid rgba(0,0,0,0.3);
+    margin-top: 60px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    /* height: 600px; */
+}
+
+.profile_image{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+}
+
+.menu_container{
+    padding-top: 27px;
+    /* margin-bottom: auto; */
 }
