@@ -40,7 +40,7 @@
     <div id="username_container">
         <p id="user_github_id">{{ $user_info->github_id }}</p>
     </div>
-    <div>
+    <div style="text-align:center;">
         <p id="posts_count">投稿数 : {{ $image_count }}</p>
     </div>
 </div>
