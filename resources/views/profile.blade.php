@@ -48,7 +48,7 @@
 
 <div class="profile_posts_container">
 @isset($images)
-    @foreach ($images as $image)
+    @foreach ($images->sortByDesc('id') as $image)
         <div class="profile_post_container">
             <!-- <img src="{{ asset('storage/' . basename($image->img)) }}"> -->
             <img src="data:image/png;base64,<?= $image->image ?>" id="img">

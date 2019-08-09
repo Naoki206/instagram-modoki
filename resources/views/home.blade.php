@@ -40,7 +40,7 @@
 <div class="container">
 <div class="images_container">
 @isset($images)
-    @foreach ($images as $image)
+    @foreach ($images->sortByDesc('id') as $image)
     <div class="image_container">
         <div>
             <img src=" https://github.com/{{{ $image->github_id }}}.png " class="profile_image">
@@ -77,6 +77,9 @@
         
     </div>
     @endforeach
+    <div class="paginate_container">
+    {{ $images->links() }}
+    </div>
 @endisset
 </div>
 </div>

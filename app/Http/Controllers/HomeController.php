@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         // dd(Auth::id());
         $auth = Auth::check();
-        $images = Image::get();
+        $images = Image::paginate(15);
         $auth_status = Auth::check();
         $auth_id = Auth::id();
         // foreach($images as $image) {
@@ -72,7 +72,7 @@ class HomeController extends Controller
             Image::insert([
                 "image" => $image, "user_id" => $user_id, "comment" => $request->comment, "github_id" => $github_id,
             ]);
-            $images = Image::get();
+            $images = Image::paginate(15);
             // $likes = Image::find(2)->likes;
             // dd($likes);
             // foreach($likes as $like) {
@@ -101,6 +101,10 @@ class HomeController extends Controller
     //ユーザー詳細ページ
     public function profile($id) {
         $auth = Auth::check();
+        $auth = Auth::check();
+        if(!$auth) {
+            return view('loginform');
+        }
         $images = Image::where('user_id', $id)->get();
         $image_count = $images->count();
         $user_info = User::find($id);
@@ -129,7 +133,7 @@ class HomeController extends Controller
             Like::insert(['user_id' => Auth::id(), 'image_id' => $id, 'image_flg' => 1, 'github_id' => $user_github_id]);
         }
 
-        $images = Image::get();
+        $images = Image::paginate(15);
         $auth_status = Auth::check();
         $auth_id = Auth::id();
         //dd($auth_status);
