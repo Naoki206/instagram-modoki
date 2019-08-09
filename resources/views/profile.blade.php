@@ -38,7 +38,7 @@
 <div class="profile_image">
     <img src=" https://github.com/{{{ $user_info->github_id }}}.png" id="profile_image">
     <div id="username_container">
-        <p>{{ $user_info->github_id }}</p>
+        <p id="user_github_id">{{ $user_info->github_id }}</p>
     </div>
     <div>
         <p id="posts_count">投稿数 : {{ $image_count }}</p>

@@ -32,8 +32,15 @@ class HomeController extends Controller
         $auth = Auth::check();
         $images = Image::get();
         $auth_status = Auth::check();
+        $auth_id = Auth::id();
+        // foreach($images as $image) {
+        //         $image_user_id = $image->likes;
+        //         // dd(empty($image_user_id));
+        // }
+        // dd($image_user_id);
+        // dd(empty($image_user_id));
         //dd($auth_status);
-        return view('home', compact('images', 'auth'));
+        return view('home', compact('images', 'auth', 'auth_id'));
     }
 
     public function upload(Request $request)
@@ -66,11 +73,13 @@ class HomeController extends Controller
                 "image" => $image, "user_id" => $user_id, "comment" => $request->comment, "github_id" => $github_id,
             ]);
             $images = Image::get();
-            // foreach($images as $image) {
-            //     dd($image->comment);
+            // $likes = Image::find(2)->likes;
+            // dd($likes);
+            // foreach($likes as $like) {
+            //     dd($like);
             // }
-            // return view('home')->with('filename', basename($path));
-            return view('home', compact('images', 'auth'));
+            $auth_id = Auth::id();
+            return view('home', compact('images', 'auth', 'auth_id'));
         } else {
             return redirect()
                 ->back()
@@ -122,8 +131,9 @@ class HomeController extends Controller
 
         $images = Image::get();
         $auth_status = Auth::check();
+        $auth_id = Auth::id();
         //dd($auth_status);
-        return view('home', compact('images', 'auth'));
+        return view('home', compact('images', 'auth', 'auth_id'));
     }
 
     //いいねした人一覧

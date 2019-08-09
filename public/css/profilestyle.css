@@ -65,11 +65,14 @@ header{
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    text-align: center;
 }
 
 #username_container{
+    width: 200px;
     font-size: 30px;
-    padding-right: 20px;
+    padding-right: 30px;
+    margin-right: 30px;
 }
 
 .menu_container{
@@ -89,5 +92,8 @@ header{
     width: 100px;
 }
 
+#user_github_id{
+    width: 200px;
+}
 
 

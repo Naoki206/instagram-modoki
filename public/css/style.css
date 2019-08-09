@@ -80,3 +80,15 @@ img{
     padding-top: 500px;
     font-size: 500px;
 }
+
+.fa-heart{
+    width: 20px;
+    padding-left: 5px;
+    height: 20px;
+}
+
+.github_btn{
+    text-align: center;
+    margin: auto; 
+    padding-top: 200px; 
+}

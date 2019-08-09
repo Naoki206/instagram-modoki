@@ -52,8 +52,18 @@
         </div>
 
         <div>
-            @if($auth)
-                <a href="{{ route('like', ['id' => $image->id ]) }}" class="far fa-heart" id="a"></a>
+            <!-- <p>{{ $image->likes }}</p> -->
+            @if($auth) <!-- ログイン者のみいいねができるように -->
+                @if(isset($image->likes[0])) <!-- レコードが存在するかどうか(いいねをしたことがあるひとがいるかどうか)の判定 -->
+                    @if($image->likes[0]->user_id == $auth_id && $image->likes[0]->image_flg == 1) <!-- いいねをした人が自分かどうかの判定 -->
+                    <!-- <a href="{{ route('like', ['id' => $image->id ]) }}" class="far fa-heart" id="a"></a> -->
+                    <a href="{{ route('like', ['id' => $image->id ]) }}" class="fas fa-heart" id="a"></a>
+                    @else <!-- 自分はいいねしていなかった場合　-->
+                    <a href="{{ route('like', ['id' => $image->id ]) }}" class="far fa-heart" id="a"></a>
+                    @endif
+                @else <!-- 初いいね -->
+                    <a href="{{ route('like', ['id' => $image->id ]) }}" class="far fa-heart" id="a"></a>
+                @endif
             @else
                 <a href="{{ route('github_login') }}" class="far fa-heart" id="a"></a>
             @endif  

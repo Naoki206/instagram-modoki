@@ -36,6 +36,7 @@
     <div>
         <img src=" https://github.com/{{{ $liker->github_id }}}.png" id="profile_image_liker">
         <p id="liker_github_id">{{ $liker->github_id }}</p>
+        <!-- <p id="liker_github_id">{{ $liker->image->id }}</p> -->
     </div>
     @endforeach
 @endif
